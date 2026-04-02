@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepsi | Thirsty For More</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #F4F4F5; overflow-x: hidden; }
+        h1, h2, .pepsi-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        .glass-nav { background: rgba(5, 5, 5, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .hero-bg {
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, #050505 100%), 
+            url('https://images.unsplash.com/photo-1600861195091-690c92f1d224?q=80&w=2000&auto=format&fit=crop') center/cover;
+        }
+        .btn-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-hover:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 92, 230, 0.6); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-3xl font-bold pepsi-font tracking-tighter flex items-center gap-2">
+                <!-- Mocking the bold new Pepsi logo text -->
+                <span class="text-white">PEPSI</span>
+            </div>
+            <div class="hidden md:flex gap-8 font-semibold text-sm tracking-wide uppercase">
+                <a href="#" class="hover:text-[#005CE6] transition-colors">Taste</a>
+                <a href="#" class="hover:text-[#005CE6] transition-colors">Culture</a>
+                <a href="#" class="hover:text-[#005CE6] transition-colors">Gear</a>
+            </div>
+            <div>
+                <a href="#" class="btn-hover bg-[#005CE6] text-white px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wide">
+                    Find Near Me
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen w-full flex items-center justify-center relative overflow-hidden">
+        <!-- Floating Can Mock -->
+        <img id="hero-can" src="https://freepngimg.com/thumb/pepsi/13-pepsi-can-png-image.png" alt="Pepsi Can" 
+             class="absolute z-10 w-48 md:w-80 transform -rotate-12 drop-shadow-2xl opacity-0">
+        
+        <div class="relative z-20 text-center px-4 max-w-5xl mt-20">
+            <h1 id="hero-title" class="text-7xl md:text-9xl font-bold leading-none mb-6 opacity-0 tracking-tighter">
+                Thirsty <span class="text-[#005CE6]">For</span> More.
+            </h1>
+            <p id="hero-sub" class="text-lg md:text-2xl mb-10 max-w-2xl mx-auto opacity-0">
+                Zero Sugar. 100% Bold. Drop into the new era of taste and culture.
+            </p>
+            <div id="hero-ctas" class="flex flex-col sm:flex-row gap-4 justify-center opacity-0">
+                <a href="#" class="btn-hover bg-white text-black px-8 py-4 rounded-full font-bold text-lg uppercase tracking-wide">
+                    Shop The Drop
+                </a>
+                <a href="#" class="btn-hover border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg uppercase tracking-wide bg-black/30 backdrop-blur-md">
+                    Join Pepsi Pass
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Ticker -->
+    <div class="bg-[#005CE6] w-full py-3 overflow-hidden whitespace-nowrap border-y border-white/20">
+        <div class="inline-block animate-[spin_10s_linear_infinite]" style="animation: scrollTicker 20s linear infinite;">
+            <span class="text-white text-xl font-bold uppercase tracking-widest px-8">+++ ZERO SUGAR +++ 100% BOLD +++ NEW MERCH DROP +++ GET IT DELIVERED +++ ZERO SUGAR +++ 100% BOLD +++</span>
+            <span class="text-white text-xl font-bold uppercase tracking-widest px-8">+++ ZERO SUGAR +++ 100% BOLD +++ NEW MERCH DROP +++ GET IT DELIVERED +++ ZERO SUGAR +++ 100% BOLD +++</span>
+        </div>
+    </div>
+
+    <style>
+        @keyframes scrollTicker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+
+    <script>
+        // High-impact entrance animations
+        gsap.to("#hero-title", { opacity: 1, y: 0, duration: 1, delay: 0.2, ease: "power4.out", startAt: {y: 50} });
+        gsap.to("#hero-sub", { opacity: 1, y: 0, duration: 1, delay: 0.4, ease: "power4.out", startAt: {y: 30} });
+        gsap.to("#hero-ctas", { opacity: 1, y: 0, duration: 1, delay: 0.6, ease: "power4.out", startAt: {y: 20} });
+        gsap.to("#hero-can", { 
+            opacity: 1, 
+            y: 0, 
+            rotation: 15, 
+            duration: 1.5, 
+            delay: 0.8, 
+            ease: "elastic.out(1, 0.5)", 
+            startAt: {y: 200, rotation: -30} 
+        });
+
+        // Floating animation for the can
+        gsap.to("#hero-can", {
+            y: "-=20",
+            rotation: "+=5",
+            duration: 2,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+            delay: 2.3
+        });
+    </script>
+</body>
+</html>
